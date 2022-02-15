@@ -1,1 +1,4 @@
 Contrato de Serviços Saas
+
+1 - Paragrafo 1
+1.1 - O cliente deve solicitar as credenciais de acesso;
