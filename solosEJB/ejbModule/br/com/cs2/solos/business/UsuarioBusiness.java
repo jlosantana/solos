@@ -1,5 +1,6 @@
 package br.com.cs2.solos.business;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -60,11 +61,21 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 		
 		System.out.println("deletando o usuário: " + usuarioParaDelecao.getNome());
 		
-		for (UsuarioModel usuarioCorrente : usuarioDB) {
+		Iterator<UsuarioModel> it = usuarioDB.iterator();
+		
+		// enquanto for verdade
+		while (it.hasNext()) {
+			// faz um cast de Object para UsuarioModel
+			UsuarioModel usuarioCorrente = (UsuarioModel) it.next();
+			
+			// compara com o usuario recebido para exclusão
 			if (usuarioParaDelecao.equals(usuarioCorrente)) {
-				usuarioDB.remove(usuarioCorrente);
+				// pede para o iterator fazer a remoção do objeto da lista
+				it.remove();
+				break;
 			}
 		}
+		
 	}
 
 }
