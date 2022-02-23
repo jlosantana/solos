@@ -1,6 +1,6 @@
 package br.com.cs2.solos.business;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,6 +9,9 @@ import br.com.cs2.solos.model.UsuarioModel;
 
 @Stateless
 public class UsuarioBusiness implements UsuarioBusinessLocal {
+	
+	// Simulação do banco de dados utilizando o LinkedList
+	private List<UsuarioModel> usuarioDB = new LinkedList<>();
 
     public UsuarioBusiness() {
     }
@@ -18,6 +21,8 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 		
 		System.out.println("cadastrando o usuário: " + novoUsuario.getNome());
 		
+		usuarioDB.add(novoUsuario);
+		
 		return novoUsuario;
 	}
 
@@ -26,30 +31,40 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 		
 		System.out.println("buscando os usuários pelo nome: " + nomeDeUsuario);
 		
-		// Criar um usuario de exemplo
-		UsuarioModel usuarioExemplo = new UsuarioModel();
-		usuarioExemplo.setNome(nomeDeUsuario);
-		
-		// Criar uma lista de exemplo
-		List<UsuarioModel> listaDeUsuarios = new ArrayList<>();
-		
-		// Adicionar o usuario de exemplo na lista para retorno simulando uma busca no banco de dados.
-		listaDeUsuarios.add(usuarioExemplo);
-		
-		return listaDeUsuarios;
+		return usuarioDB;
 	}
 
 	@Override
-	public UsuarioModel atualizar(UsuarioModel usuarioExistente) {
+	public UsuarioModel atualizar(UsuarioModel usuarioParaAtualizacao) {
 		
-		System.out.println("atualizando o usuario: " + usuarioExistente.getNome());
+		System.out.println("atualizando o usuario: " + usuarioParaAtualizacao.getNome());
 		
-		return usuarioExistente;
+		for (UsuarioModel usuarioCorrente : usuarioDB) {
+			if (usuarioParaAtualizacao.equals(usuarioCorrente)) {
+				// atualizando CPF
+				usuarioCorrente.setCpf(usuarioParaAtualizacao.getCpf());
+				// atualizando o login
+				usuarioCorrente.setLogin(usuarioParaAtualizacao.getLogin());
+				// atualizando o nome
+				usuarioCorrente.setNome(usuarioParaAtualizacao.getNome());
+				// atualizando a senha
+				usuarioCorrente.setSenha(usuarioParaAtualizacao.getSenha());
+			}
+		}
+		
+		return usuarioParaAtualizacao;
 	}
 
 	@Override
 	public void deletar(UsuarioModel usuarioParaDelecao) {
+		
 		System.out.println("deletando o usuário: " + usuarioParaDelecao.getNome());
+		
+		for (UsuarioModel usuarioCorrente : usuarioDB) {
+			if (usuarioParaDelecao.equals(usuarioCorrente)) {
+				usuarioDB.remove(usuarioCorrente);
+			}
+		}
 	}
 
 }
