@@ -2,3 +2,10 @@ rascunhos/
 *.jpg
 *.png
 *.pdf
+*.class
+build/
+solosEJB/build/
+solosEAR/build/
+solosWeb/build/
+solosWeb/build/classes/
+classes/
