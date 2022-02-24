@@ -46,9 +46,12 @@ public class UsuarioServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		System.out.println("executing get ...");
 		
-		List<UsuarioModel> listaUsuarios = usuarioBusiness.listar("João");
+		String nomeDeUsuario = request.getParameter("nomeDeUsuario");
+		
+		List<UsuarioModel> listaUsuarios = usuarioBusiness.listar(nomeDeUsuario);
 		
 		for (UsuarioModel usuarioModel : listaUsuarios) {
 			System.out.println("Nome do usuário: " + usuarioModel.getNome());
