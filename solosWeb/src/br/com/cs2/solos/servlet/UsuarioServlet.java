@@ -8,27 +8,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UsuarioServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-       
-    public UsuarioServlet() {
-        super();
-    }
 
+	public UsuarioServlet() {
+		super();
+	}
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("executing get...");
+		System.out.println("executing get ...");
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("executing post...");
+		System.out.println("executing post ...");
 	}
 
+	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("executing put...");
+		System.out.println("executing put ...");
 	}
 
+	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("executing delete...");
+		System.out.println("executing delete ...");
 	}
 
 }

@@ -6,9 +6,9 @@ public class PessoaModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String nome;
+	protected String nome;
 	private String cpf;
-	
+
 	public PessoaModel(String novoNome) {
 		this.nome = novoNome;
 	}
@@ -27,10 +27,6 @@ public class PessoaModel implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public void andar() {
-		System.out.println("pessoa andando...");
 	}
 
 }

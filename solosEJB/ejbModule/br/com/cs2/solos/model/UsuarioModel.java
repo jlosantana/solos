@@ -8,7 +8,7 @@ public class UsuarioModel extends PessoaModel {
 	// Atributos de classe
 	private String login;
 	private String senha;
-	
+
 	public UsuarioModel(String nomeUsuario) {
 		super(nomeUsuario);
 	}
