@@ -20,7 +20,7 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 	@Override
 	public UsuarioModel cadastrar(UsuarioModel novoUsuario) {
 		
-		System.out.println("cadastrando o usuário: " + novoUsuario.getNome());
+		System.out.println("cadastrando o usuário: " + novoUsuario.getNome() + ", " + novoUsuario.getCpf());
 		
 		usuarioDB.add(novoUsuario);
 		
@@ -31,6 +31,12 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 	public List<UsuarioModel> listar(String nomeDeUsuario) {
 		
 		System.out.println("buscando os usuários pelo nome: " + nomeDeUsuario);
+		
+		usuarioDB.add(new UsuarioModel("Alexandre"));
+		usuarioDB.add(new UsuarioModel("Melissa"));
+		usuarioDB.add(new UsuarioModel("Leonardo"));
+		usuarioDB.add(new UsuarioModel("Larissa"));
+		usuarioDB.add(new UsuarioModel("João"));
 		
 		return usuarioDB;
 	}
