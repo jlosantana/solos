@@ -20,13 +20,26 @@
 		String nomeUsuario = request.getParameter("nomeUsuario"); 
 	%>
 	
-	<%if (nomeUsuario != null) { %>
+	<c:if test="<%=nomeUsuario != null%>">
 		<h3>Nome do usuário enviado: <%=nomeUsuario %></h3>
-	<%} %>
+	</c:if>
 	
 	<form action="index.jsp" method="get">
 		<input name="nomeUsuario" />
 		<button type="submit">Enviar</button>
 	</form>
+	
+	<h1>Lista de Usuários</h1>
+	
+	<table border="1">
+		<tr>
+			<td>Nome</td>
+		</tr>
+		<c:forEach var="usuario" items="${indexBean.listaUsuarios}">
+		    <tr>
+		         <td>${usuario.nome}</td>
+		    </tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
