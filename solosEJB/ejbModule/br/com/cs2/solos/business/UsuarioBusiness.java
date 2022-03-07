@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import br.com.cs2.solos.model.UsuarioModel;
 
 @Stateless
-public class UsuarioBusiness implements UsuarioBusinessLocal {
+public class UsuarioBusiness implements UsuarioBusinessFacade {
 	
 	// Simulação do banco de dados utilizando o LinkedList
 	private List<UsuarioModel> usuarioDB = new LinkedList<>();

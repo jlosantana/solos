@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.cs2.solos.business.UsuarioBusinessLocal;
+import br.com.cs2.solos.business.UsuarioBusinessFacade;
 import br.com.cs2.solos.model.UsuarioModel;
 
 public class UsuarioServlet extends HttpServlet {
@@ -22,7 +22,7 @@ public class UsuarioServlet extends HttpServlet {
 
 	private InitialContext context;
 
-	private UsuarioBusinessLocal usuarioBusiness;
+	private UsuarioBusinessFacade usuarioBusiness;
 
 	// Construtor
 	public UsuarioServlet() {
@@ -40,7 +40,7 @@ public class UsuarioServlet extends HttpServlet {
 			// executa a criação do contexto
 			context = new InitialContext();
 
-			usuarioBusiness = (UsuarioBusinessLocal) context.lookup("solosEAR/UsuarioBusiness/local");
+			usuarioBusiness = (UsuarioBusinessFacade) context.lookup("solosEAR/UsuarioBusiness/local");
 
 		} catch (Exception e) {
 			// se ocorrer erro caia aqui nesse bloco

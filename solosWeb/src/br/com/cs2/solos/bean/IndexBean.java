@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.naming.InitialContext;
 
-import br.com.cs2.solos.business.UsuarioBusinessLocal;
+import br.com.cs2.solos.business.UsuarioBusinessFacade;
 import br.com.cs2.solos.model.UsuarioModel;
 
 
@@ -15,7 +15,7 @@ public class IndexBean {
 	
 	private InitialContext context;
 
-	private UsuarioBusinessLocal usuarioBusiness;
+	private UsuarioBusinessFacade usuarioBusiness;
 	
 	private List<UsuarioModel> listaUsuarios;
 	
@@ -28,7 +28,7 @@ public class IndexBean {
 			// executa a criação do contexto
 			context = new InitialContext();
 
-			usuarioBusiness = (UsuarioBusinessLocal) context.lookup("solosEAR/UsuarioBusiness/local");
+			usuarioBusiness = (UsuarioBusinessFacade) context.lookup("solosEAR/UsuarioBusiness/local");
 
 		} catch (Exception e) {
 			// se ocorrer erro caia aqui nesse bloco

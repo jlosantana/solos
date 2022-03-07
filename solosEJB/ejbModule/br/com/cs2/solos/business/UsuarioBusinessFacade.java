@@ -7,7 +7,7 @@ import javax.ejb.Local;
 import br.com.cs2.solos.model.UsuarioModel;
 
 @Local
-public interface UsuarioBusinessLocal {
+public interface UsuarioBusinessFacade {
 
 	UsuarioModel cadastrar(UsuarioModel novoUsuario);
 

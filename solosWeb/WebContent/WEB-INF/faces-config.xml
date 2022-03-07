@@ -32,5 +32,13 @@
 			<to-view-id>/cadastrarUsuario.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastrarUsuario</display-name>
+		<from-view-id>/cadastrarUsuario.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>listaUsuarios</from-outcome>
+			<to-view-id>/listaUsuarios.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

@@ -1,8 +1,7 @@
 package br.com.cs2.solos.bean;
 
-import javax.naming.InitialContext;
-
-import br.com.cs2.solos.business.UsuarioBusinessLocal;
+import br.com.cs2.solos.business.UsuarioBusinessFacade;
+import br.com.cs2.solos.factory.FacadeFactory;
 import br.com.cs2.solos.model.UsuarioModel;
 
 // Controller layer
@@ -11,33 +10,28 @@ public class CadastroUsuariosBean {
 	// atributos de classe
 	private String nome;
 
-	private InitialContext context;
+	private String cpf;
 
-	private UsuarioBusinessLocal usuarioBusiness;
+	private String login;
+
+	private String senha;
+
+	private UsuarioBusinessFacade usuarioBusiness;
 
 	// construtor
 
 	// métodos
 
 	public String salvarUsuario() {
-		// TODO fazer o lookup do EJB e invocar o salvar passando o usuriomodel
-		// preenchido com os valores que foram informados no formulário
 
-		// Meu código
-		try {
-			// executa a criação do contexto
-			context = new InitialContext();
+		usuarioBusiness = FacadeFactory.getInstace().criarBusinessFacade();
 
-			usuarioBusiness = (UsuarioBusinessLocal) context.lookup("solosEAR/UsuarioBusiness/local");
-			
-			UsuarioModel novoUsuario = new UsuarioModel(this.nome);
-			
-			usuarioBusiness.cadastrar(novoUsuario);
+		UsuarioModel novoUsuario = new UsuarioModel(this.nome);
+		novoUsuario.setCpf(this.cpf);
+		novoUsuario.setLogin(this.login);
+		novoUsuario.setSenha(this.senha);
 
-		} catch (Exception e) {
-			// se ocorrer erro caia aqui nesse bloco
-			System.out.println(e.getMessage());
-		}
+		usuarioBusiness.cadastrar(novoUsuario);
 
 		return "success";
 	}
@@ -50,4 +44,29 @@ public class CadastroUsuariosBean {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 }
