@@ -6,34 +6,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista Usuários</title>
+<title>Lista de Usuários</title>
 </head>
 <body>
 	<f:view>
-	
-		<h:dataTable var="usuario" value="#{listaUsuariosBean.listaUsuarios}" width="100%" border="1">
+		<h1>Lista de Usuários</h1>
+		<h:form>
+			<h:commandLink value="Novo Usuário" action="novoUsuario"/>
+		</h:form>
+		
+		<h:dataTable var="usuario" value="#{listaUsuariosBean.listaUsuarios}"
+			width="100%" border="1">
 			<h:column>
 				<f:facet name="header">
-		            <h:outputText value="Nome" />
-		        </f:facet>
+					<h:outputText value="Nome" />
+				</f:facet>
 				<h:outputText value="#{usuario.nome}"></h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-		            <h:outputText value="CPF" />
-		        </f:facet>
+					<h:outputText value="CPF" />
+				</f:facet>
 				<h:outputText value="#{usuario.cpf}"></h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-		            <h:outputText value="Login" />
-		        </f:facet>
+					<h:outputText value="Login" />
+				</f:facet>
 				<h:outputText value="#{usuario.login}"></h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-		            <h:outputText value="Senha" />
-		        </f:facet>
+					<h:outputText value="Senha" />
+				</f:facet>
 				<h:outputText value="#{usuario.senha}"></h:outputText>
 			</h:column>
 		</h:dataTable>

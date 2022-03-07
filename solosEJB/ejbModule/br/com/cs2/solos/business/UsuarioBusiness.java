@@ -32,12 +32,6 @@ public class UsuarioBusiness implements UsuarioBusinessLocal {
 		
 		System.out.println("buscando os usuários pelo nome: " + nomeDeUsuario);
 		
-		usuarioDB.add(new UsuarioModel("Alexandre"));
-		usuarioDB.add(new UsuarioModel("Melissa"));
-		usuarioDB.add(new UsuarioModel("Leonardo"));
-		usuarioDB.add(new UsuarioModel("Larissa"));
-		usuarioDB.add(new UsuarioModel("João"));
-		
 		return usuarioDB;
 	}
 
