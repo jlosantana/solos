@@ -1,5 +1,9 @@
 package br.com.cs2.solos.business;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +26,26 @@ public class UsuarioBusiness implements UsuarioBusinessFacade {
 		
 		System.out.println("cadastrando o usuário: " + novoUsuario.getNome() + ", " + novoUsuario.getCpf());
 		
-		usuarioDB.add(novoUsuario);
+		try {
+		
+			Connection dbConecction = getConnection();
+			
+			String insertStatement = "INSERT INTO public.usuario(login, nome, cpf, senha) VALUES (?, ?, ?, ?)";
+			
+			PreparedStatement insertPreparedStatement = dbConecction.prepareStatement(insertStatement);
+			
+			insertPreparedStatement.setString(1, novoUsuario.getLogin());
+			insertPreparedStatement.setString(2, novoUsuario.getNome());
+			insertPreparedStatement.setString(3, novoUsuario.getCpf());
+			insertPreparedStatement.setString(4, novoUsuario.getSenha());
+			
+			insertPreparedStatement.execute();
+			
+			dbConecction.close();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return novoUsuario;
 	}
@@ -76,6 +99,15 @@ public class UsuarioBusiness implements UsuarioBusinessFacade {
 			}
 		}
 		
+	}
+	
+	public Connection getConnection() throws SQLException {
+
+		String url = "jdbc:postgresql://localhost:5432/solos?user=postgres&password=postgres";
+
+		Connection conn = DriverManager.getConnection(url);
+		
+		return conn;
 	}
 
 }
