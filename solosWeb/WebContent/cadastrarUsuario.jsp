@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<!-- Richfaces -->
+<%@ taglib prefix="rich" uri="http://richfaces.org/rich"%>
+<%@ taglib prefix="a4j" uri="http://richfaces.org/a4j"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,7 +42,7 @@
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li>						
-								<h:commandLink value="Lista de Usuários" action="listaUsuarios" />						
+								<a4j:commandLink value="Lista de Usuários" action="listaUsuarios" />
 							</li>
 							<li class="active"><a href="#">Novo Usuário <span class="sr-only">(current)</span></a></li>
 						</ul>

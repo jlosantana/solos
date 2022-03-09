@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<!-- Richfaces -->
+<%@ taglib prefix="rich" uri="http://richfaces.org/rich"%>
+<%@ taglib prefix="a4j" uri="http://richfaces.org/a4j"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,28 +57,34 @@
 	
 			<h1>Lista de Usuários</h1>
 			
-	
-			<h:dataTable var="usuario" value="#{listaUsuariosBean.listaUsuarios}" styleClass="table">
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Nome" />
-					</f:facet>
-					<h:outputText value="#{usuario.nome}"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="CPF" />
-					</f:facet>
-					<h:outputText value="#{usuario.cpf}"></h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Login" />
-					</f:facet>
-					<h:outputText value="#{usuario.login}"></h:outputText>
-				</h:column>			
-			</h:dataTable>
-	
+			<h:form>
+				<h:dataTable var="usuario" value="#{listaUsuariosBean.listaUsuarios}" styleClass="table">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{usuario.nome}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="CPF" />
+						</f:facet>
+						<h:outputText value="#{usuario.cpf}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Login" />
+						</f:facet>
+						<h:outputText value="#{usuario.login}"></h:outputText>
+					</h:column>	
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<h:commandLink value="Editar" action="editarUsuario" />
+					</h:column>			
+				</h:dataTable>
+			</h:form>
 		</f:view>	
 	</div>
 </body>
